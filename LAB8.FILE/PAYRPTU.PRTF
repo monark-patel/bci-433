@@ -1,0 +1,71 @@
+000001180312     A          R TITLE
+000002180312     A                                  1  2DATE
+000003180312     A                                      EDTCDE(Y)
+000004180312
+000005180312     A                                  1 14TIME
+000006180312     A                                  1 40'Weekly Payroll Report'
+000007180312     A                                  1 75'Page:'
+000008180312     A                                  1 80PAGNBR
+000009180312     A                                  2  2'Name: '
+000010180312     A                                  2  9'Monark Patel'
+000011180403     A            WORKTYPE      25      3 44
+000012180402     A          R COLHDG                    SPACEB(2)
+000023180319     A                                     6'Employee'
+000024180319     A                                    19'Work'
+000025180319     A                                    29'Pay'
+000026180319     A                                    37'Hourly'
+000027180319     A                                    47'Hours'
+000028180319     A                                    56'Regular'
+000029180319     A                                    71'Overtime'
+000030180319     A                                    89'Total'
+000031180402     A                                   103'Tax'
+000032180402     A                                   116'Dues'
+000033180402     A                                   128'Net'
+000034180319     A                                     7'Number'
+000035180319     A                                      SPACEB(1)
+000036180319     A                                    19'Shift'
+000037180319     A                                    28'Grade'
+000038180319     A                                    38'Rate'
+000039180319     A                                    47'Worked'
+000040180319     A                                    58'Pay'
+000041180319     A                                    73'Pay'
+000042180319     A                                    90'Pay'
+000043180402     A                                   102'Deducted'
+000044180402     A                                   128'Pay'
+000098180319     A                                    76' '
+000099180319     A                                      SPACEB(1)
+000100180319     A          R EMPDETAIL                 SPACEB(1)
+000101180312     A            EMPNUM    R    9S 0      5REFFLD(ALLSHIFT/EMPNUM SENECAPAY/A-
+000102180312     A                                      LLSHIFT)
+000103180312     A                                      EDTWRD('0   -   -   ')
+000104180312     A            WORKSHIFT R    1A       20REFFLD(ALLSHIFT/WORKSHIFT +
+000105180312     A                                      SENECAPAY/ALLSHIFT)
+000106180312     A            PAYGRADE  R             30REFFLD(ALLSHIFT/PAYGRADE +
+000107180312     A                                      SENECAPAY/ALLSHIFT)
+000108180403     A            HOURLYRATE     5  2     37EDTCDE(2)
+000109180312     A            HRSWORKED R             48REFFLD(ALLSHIFT/HRSWORKED +
+000110180312     A                                      SENECAPAY/ALLSHIFT)
+000111180403     A            REGULARPAY     7  2     55EDTCDE(2)
+000112180403     A            OVERPAY        7  2     70EDTCDE(2)
+000113180403     A            TOTALPAY       7  2     86EDTCDE(2)
+000114180403     A            TAXDEDUCT      5  2    103EDTCDE(2)
+000115180403     A            DUES           4  2    116EDTCDE(2)
+000116180410     A            NETPAY         7  2    127EDTCDE(2)
+000117180312     A          R TOTALS                    SPACEB(2)
+000118180312     A                                    41'Totals:'
+000119180312     A            TOTREGPAY      9  2     51
+000120180312     A                                      EDTCDE(1 $)
+000121180312     A            TOTOVTPAY      9  2     66EDTCDE(1 $)
+000122180312     A            TOTEMPPAY      9  2     82EDTCDE(1 $)
+000123180312
+000124180312
+000125      
+000126180403     A*%%RS+<record-sequences>
+000127180403     A*%%RS+ <sequence name="REPORT1">
+000128180403     A*%%RS+  <device type="printer" width="132" height="66" />
+000129180403     A*%%RS+  <record-write record-format="TITLE" />
+000130180403     A*%%RS+  <record-write record-format="COLHDG" />
+000131180403     A*%%RS+  <record-write record-format="EMPDETAIL" />
+000132180403     A*%%RS+  <record-write record-format="TOTALS" />
+000133180403     A*%%RS+ </sequence>
+000134180403     A*%%RS </record-sequences>

@@ -1,0 +1,39 @@
+000001180202     A          R TOLLINFO
+000002180202     A                                  1 72DATE
+000003180202     A                                      EDTCDE(Y)
+000005180205     A                                  2 28'HIGHWAY 408 TOLL    '
+000007180202     A                                  3 22'Trip information'
+000008180202     A                                  1  3USER
+000010180205     A                                  4  9'Kilometers traveled:'
+000013180205     A                                  6 10'Type of Vehicle:'
+000014180205     A                                  8 11'Time of Day:'
+000015180205     A                                 10 11'Transponder:'
+000016180205     A            KILOMETERS     3  0B  4 35RANGE(0 999)
+000018180202     A  99                                  DSPATR(PR)
+000019180205     A            VEHICLE        1   B  6 31
+000020180202     A  99                                  DSPATR(PR)
+000021180205     A                                      VALUES('L' 'H' 'M')
+000022180205     A                                  6 34'(L- Light, H- Heavy, M- Multiple H-
+000023180202     A                                      eavy) '
+000024180205     A            HOUR           2  0B  8 27RANGE(0 12)
+000025180202     A  99                                  DSPATR(PR)
+000026180205     A                                  8 32'(01 - 12)'
+000027180205     A            AMPM           2   B  8 43RANGE('AM' 'PM')
+000028180202     A  99                                  DSPATR(PR)
+000029180205     A                                  8 47'(AM or PM)'
+000030180205     A            TRANSPNDR      1   B 10 26
+000031180202     A  99                                  DSPATR(PR)
+000032180205     A                                      VALUES('Y' 'N')
+000033180205     A                                 10 30'(Y N)'
+000034180205     A          R SHOWTOLL                  CF03(03 'Exit')
+000035180205     A                                      OVERLAY
+000036180205     A                                 12 25'Applicable Toll Charges'
+000037180205     A                                 13  9'Toll Rate:'
+000038180205     A            TOLLRATE       5Y 4O 13 32EDTCDE(1 $)
+000039180205     A                                 15  6'Toll Charge:'
+000040180205     A            TOLLCHARGE     5Y 2O 15 33EDTCDE(1 $)
+000042180205     A                                 17  6'No Transponder Charge'
+000043180205     A            NOTRANSP       4  2O 17 34EDTCDE(1)
+000044180205     A                                 20  3'F3 - Exit'
+000045180205     A                                 19  9'Total charge:'
+000046180205     A            TOTALDUE       5  2O 19 33EDTWRD('   .  ')

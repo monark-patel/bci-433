@@ -1,0 +1,90 @@
+000100180305             PGM
+000101180305             DCLF       LAB4DSP
+000104180305             DCL        &MSGQ *CHAR 10
+000105180305             DCL        &MSGQLIB *CHAR 10
+000106180305             DCL        &QACTJOBSTR *CHAR 5
+000108180305             DCL        &QACTJOB *DEC 5
+000112180305             DCL        &IN30 *LGL 1
+000113180305             DCL        &CURLIB *CHAR 10
+000114180305             DCL        &TIME *CHAR 8
+000115180305             DCL        &DATE *CHAR 8
+000116180305             DCL        &RTNUSRPRF *CHAR 10
+000117180305             DCL        &PRVSIGN *CHAR 13
+000118180305
+000119180305
+000120180305             SNDRCVF
+000121180312             DOWHILE    (&IN03 = '0')
+000122180305                SELECT
+000123180305                   WHEN       &IN21 CALL QUSCMDLN
+000124180305                   WHEN       (&OPTION= '1' *OR &OPTION= '01') CALLSUBR OPTION1
+000125180305                   WHEN       (&OPTION= '2' *OR &OPTION= '02') CALLSUBR OPTION2
+000126180305                   WHEN       (&OPTION= '3' *OR &OPTION= '03') CALLSUBR OPTION3
+000127180305                   WHEN       (&OPTION= '4' *OR &OPTION= '04') CALLSUBR OPTION4
+000128180305                   WHEN       (&OPTION= '5' *OR &OPTION= '05') CALLSUBR OPTION5
+000129180312                   OTHERWISE  CALLSUBR INVALID
+000130180305                ENDSELECT
+000131180305                SNDRCVF
+000132180305             ENDDO
+000133180305             SUBR       OPTION1
+000134180305                RTVUSRPRF  CURLIB(&CURLIB)
+000135180305                CHGCURLIB  BCI433LIB
+000136180305                CALL       HWYTOLLRPG
+000137180305                DSPLIB
+000138180305                CHGCURLIB  &CURLIB
+000139180305                DSPLIB
+000140180305                CHGVAR     VAR(&MSGTXT1) VALUE('The Instructiion Version Highway Toll RPGLE program was +
+000141180305                             run.')
+000142180312                CHGVAR     VAR(&MSGTXT2) VALUE('CLLE Programs can manage an RPGLE Business Application +
+000144180312                             is run.')
+000145180312                CHGVAR     &IN30 '0'
+000146180305             ENDSUBR
+000147180305
+000148180305             SUBR       OPTION2
+000149180305                RTVUSRPRF  CURLIB(&CURLIB)
+000150180308                CHGVAR     VAR(&MSGTXT1) VALUE('Password Expiry Interval set to 000365 (days) ')
+000151180308                CHGVAR     VAR(&MSGTXT2) VALUE('CLLE Programs can report on the system and manage system +
+000152180308                             wide settings')
+000153180312                CHGVAR     &IN30 '0'
+000154180308             ENDSUBR
+000155180305
+000156180305             SUBR       OPTION3
+000157180305                RTVUSRPRF  MSGQ(&MSGQ) MSGQLIB(&MSGQLIB)
+000158180305                CHGVAR     VAR(&MSGTXT1) VALUE('Signed on User''s message queue is' *BCAT &MSGQLIB *TCAT +
+000159180305                             '/' *CAT &MSGQ)
+000160180305
+000161180305                CHGVAR     VAR(&MSGTXT2) VALUE('CLLE Programs can report on and manage the user on the +
+000162180305                             system')
+000163180312                CHGVAR     &IN30 '0'
+000164180305
+000165180305             ENDSUBR
+000166180305
+000167180305             SUBR       OPTION4
+000168180305                RTVSYSVAL  SYSVAL(QACTJOB) RTNVAR(&QACTJOB)
+000169180305                CHGVAR     &QACTJOBSTR &QACTJOB
+000170180308                CHGVAR     VAR(&MSGTXT1) VALUE('Initial number of active jobs for which storage is +
+000171180308                             allocated is:' *BCAT &QACTJOBSTR)
+000172180312                CHGVAR     &IN30 '0'
+000173180305             ENDSUBR
+000174180305
+000175180305             SUBR       OPTION5
+000176180305                RTVUSRPRF  RTNUSRPRF(&RTNUSRPRF) PRVSIGN(&PRVSIGN)
+000177180305                CHGVAR     &DATE ( %SST(&PRVSIGN 4 2) *CAT '/' *CAT %SST(&PRVSIGN 6 2) *CAT '/' *CAT +
+000178180305                             %SST(&PRVSIGN 2 2))
+000179180305                CHGVAR     &TIME ( %SST(&PRVSIGN 8 2) *CAT ':' *CAT %SST(&PRVSIGN 10 2) *CAT ':' *CAT +
+000180180305                             %SST(&PRVSIGN 12 2))
+000181180305                CHGVAR     VAR(&MSGTXT1) VALUE('Previous sign on for user' *BCAT &RTNUSRPRF *BCAT ' was +
+000182180305                             on' *CAT &DATE *BCAT &TIME)
+000183180305                CHGVAR     VAR(&MSGTXT2) VALUE('CLLE Programs can report on and manage the users on the +
+000184180305                             system')
+000185180312                CHGVAR     &IN30 '0'
+000186180305
+000187180305             ENDSUBR
+000188180312
+000189180312             SUBR       INVALID
+000190180312                CHGVAR     &IN30 '1'
+000191180312                CHGVAR     &MSGTXT1 ( ' ' )
+000192180312                CHGVAR     &MSGTXT2 ( ' ' )
+000193180312             ENDSUBR
+000194180312
+000195180305
+000196180305             ENDPGM

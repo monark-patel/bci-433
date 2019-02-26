@@ -1,0 +1,185 @@
+000100180305             PGM
+000101180305             DCLF       LAB4DSP
+000102180305             DCL        &CURLIB *CHAR 10
+000103180305             SNDRCVF
+000104180305             DOWHILE(&IN03='0')
+000105180305                SELECT
+000106180305                   WHEN       &IN21 CALL QUSCMDLN
+000107180305                   WHEN       (&OPTION = '1' *OR &OPTION ='01')CALLSUBR OPTION1
+000108180305                   OTHERWISE  CHGVAR &IN30 '1'
+000109180305                ENDSELECT
+000110180305                SNDRCVF
+000111180305                PGM
+000112180305                DCLF       LAB4DSP
+000113180305                DCL        &SYSSYM *CHAR 1
+000114180305                DCL        &SYSIPL *CHAR 1
+000115180305                DCL        &MSGQ *CHAR 10      PGM
+000116180305                DCLF       LAB4DSP
+000117180305                DCL        &SYSSYM *CHAR 1
+000118180305                DCL        &SYSIPL *CHAR 1
+000119180305                DCL        &MSGQ *CHAR 10
+000120180305                DCL        &MSGLIB *CHAR 10
+000121180305                DCL        &ACTJOBTXT *CHAR 5
+000122180305                DCL        &ACTJOB *DEC 5
+000123180305                DCL        &SRLNBR *CHAR 8
+000124180305                DCL        &PWDL *DEC 3
+000125180305                DCL        &PWDLT *CHAR 3
+000126180305                DCL        &MSGTXT *CHAR 70
+000127180305                DCL        &IN30 *LGL 1
+000128180305                SNDRCVF
+000129180305                DOWHILE    ( &IN03='0' )
+000130180305                   SELECT
+000131180305                      WHEN       (&IN21 = '1') CALL QUsCmdLn
+000132180305                      WHEN       (&OPTION='1' *OR &OPTION='01') CALLSUBR OPTION1
+000134180305                      WHEN       (&OPTION='2' *OR &OPTION='02') CALLSUBR OPTION2
+000136180305                      WHEN       (&OPTION='3' *OR &OPTION='03') DO
+000137180305                         CHGVAR     &IN30 '0'
+000138180305                         RTVUSRPRF  MSGQ(&MSGQ) MSGQLIB(&MSGLIB)
+000139180305                         CHGVAR     &MSGTXT ('Signed on User' *CAT '''s message queue is ' *CAT &MSGLIB +
+000140180305                                      *TCAT '/' *CAT &MSGQ)
+000142180305                      ENDDO
+000143180305                      WHEN       (&OPTION='4' *OR &OPTION='04') DO
+000144180305                         CHGVAR     &IN30 '0'
+000145180305                         RTVSYSVAL  SYSVAL(QACTJOB) RTNVAR(&ACTJOB)
+000146180305                         CHGVAR     &ACTJOBTXT &ACTJOB
+000147180305                         CHGVAR     &MSGTXT ('Initial number of active jobs for which storage is +
+000148180305                                      allocated is ' *BCAT &ACTJOBTXT)
+000150180305                      ENDDO
+000151180305                      WHEN       (&OPTION='5' *OR &OPTION='05') DO
+000152180305                         CHGVAR     &IN30 '0'
+000153180305                         RTVSYSVAL  SYSVAL(QSRLNBR) RTNVAR(&SRLNBR)
+000154180305                         CHGVAR     &MSGTXT ('The system serial No is ' *CAT &SRLNBR)
+000156180305                      ENDDO
+000157180305                      WHEN       (&OPTION='6' *OR &OPTION='06') DO
+000158180305                         CHGVAR     &IN30 '0'
+000159180305                         RTVSYSVAL  SYSVAL(QPWDMAXLEN) RTNVAR(&PWDL)
+000160180305                         CHGVAR     &PWDLT &PWDL
+000161180305                         CHGVAR     &MSGTXT ('Maximum password length is' *BCAT &PWDLT)
+000163180305                      ENDDO
+000164180305                      OTHERWISE  CHGVAR &IN30 '1'
+000165180305                   ENDSELECT
+000166180305                   SNDRCVF
+000167180305                DCL        &MSGLIB *CHAR 10
+000168180305                DCL        &ACTJOBTXT *CHAR 5
+000169180305                DCL        &ACTJOB *DEC 5
+000170180305                DCL        &SRLNBR *CHAR 8
+000171180305                DCL        &PWDL *DEC 3
+000172180305                DCL        &PWDLT *CHAR 3
+000173180305                DCL        &MSGTXT *CHAR 70
+000174180305                DCL        &IN30 *LGL 1
+000175180305                SNDRCVF
+000176180305                DOWHILE    ( &IN03='0' )
+000177180305                   SELECT
+000178180305                      WHEN       (&IN21 = '1') CALL QUsCmdLn
+000179180305                      WHEN       (&OPTION='1' *OR &OPTION='01') CALLSUBR OPTION1
+000180180305                      WHEN       (&OPTION='2' *OR &OPTION='02') CALLSUBR OPTION2
+000181180305                      WHEN       (&OPTION='3' *OR &OPTION='03') DO
+000182180305                         CHGVAR     &IN30 '0'
+000183180305                         RTVUSRPRF  MSGQ(&MSGQ) MSGQLIB(&MSGLIB)
+000184180305                         CHGVAR     &MSGTXT ('Signed on User' *CAT '''s message queue is ' *CAT &MSGLIB +
+000185180305                                      *TCAT '/' *CAT &MSGQ)
+000186180305                      ENDDO
+000187180305                      WHEN       (&OPTION='4' *OR &OPTION='04') DO
+000188180305                         CHGVAR     &IN30 '0'
+000189180305                         RTVSYSVAL  SYSVAL(QACTJOB) RTNVAR(&ACTJOB)
+000190180305                         CHGVAR     &ACTJOBTXT &ACTJOB
+000191180305                         CHGVAR     &MSGTXT ('Initial number of active jobs for which storage is +
+000192180305                                      allocated is ' *BCAT &ACTJOBTXT)
+000193180305                      ENDDO
+000194180305                      WHEN       (&OPTION='5' *OR &OPTION='05') DO
+000195180305                         CHGVAR     &IN30 '0'
+000196180305                         RTVSYSVAL  SYSVAL(QSRLNBR) RTNVAR(&SRLNBR)
+000197180305                         CHGVAR     &MSGTXT ('The system serial No is ' *CAT &SRLNBR)
+000198180305                      ENDDO
+000199180305                      WHEN       (&OPTION='6' *OR &OPTION='06') DO
+000200180305                         CHGVAR     &IN30 '0'
+000201180305                         RTVSYSVAL  SYSVAL(QPWDMAXLEN) RTNVAR(&PWDL)
+000202180305                         CHGVAR     &PWDLT &PWDL
+000203180305                         CHGVAR     &MSGTXT ('Maximum password length is' *BCAT &PWDLT)
+000204180305                      ENDDO
+000205180305                      OTHERWISE  CHGVAR &IN30 '1'
+000206180305                   ENDSELECT
+000207180305                   SNDRCVF
+000208180305                ENDDO
+000209180305
+000210180305                SUBR       OPTION1
+000211180305                   RTVJOBA    CURLIB(&CURLIB)
+000212180305                   CHGCURLIB  BCI433LIB
+000213180305                   CALL       HWYTOLLRPG
+000214180305                   DSPLIB
+000215180305                   CHGCURLIB  &CURLIB
+000216180305                   DSPLIB
+000217180305                   CHGVAR     &MsgTxt1("the instructor version of Highway Toll RPGLE program was run")
+000218180305                   CHGVAR     &MsgTxt2("CLLE Programs can manage how an RPGLE Business Application is +
+000219180305                                run")
+000220180305                ENDSUBR
+000221180305                ENDPGM     PGM
+000222180305             DCLF       LAB4DSP
+000223180305             DCL        &CURLIB *CHAR 10
+000224180305             SNDRCVF
+000225180305             DOWHILE(&IN03='0')
+000226180305                SELECT
+000227180305                   WHEN       &IN21 CALL QUSCMDLN
+000228180305                   WHEN       (&OPTION = '1' *OR &OPTION ='01')CALLSUBR OPTION1
+000229180305                   OTHERWISE  CHGVAR &IN30 '1'
+000230180305                ENDSELECT
+000231180305                SNDRCVF
+000232180305                PGM
+000233180305                DCLF       LAB4DSP
+000234180305                DCL        &SYSSYM *CHAR 1
+000235180305                DCL        &SYSIPL *CHAR 1
+000236180305                DCL        &MSGQ *CHAR 10
+000237180305                DCL        &MSGLIB *CHAR 10
+000238180305                DCL        &ACTJOBTXT *CHAR 5
+000239180305                DCL        &ACTJOB *DEC 5
+000240180305                DCL        &SRLNBR *CHAR 8
+000241180305                DCL        &PWDL *DEC 3
+000242180305                DCL        &PWDLT *CHAR 3
+000243180305                DCL        &MSGTXT *CHAR 70
+000244180305                DCL        &IN30 *LGL 1
+000245180305                SNDRCVF
+000246180305                DOWHILE    ( &IN03='0' )
+000247180305                   SELECT
+000248180305                      WHEN       (&IN21 = '1') CALL QUsCmdLn
+000249180305                      WHEN       (&OPTION='1' *OR &OPTION='01') CALLSUBR OPTION1
+000250180305                      WHEN       (&OPTION='2' *OR &OPTION='02') CALLSUBR OPTION2
+000251180305                      WHEN       (&OPTION='3' *OR &OPTION='03') DO
+000252180305                         CHGVAR     &IN30 '0'
+000253180305                         RTVUSRPRF  MSGQ(&MSGQ) MSGQLIB(&MSGLIB)
+000254180305                         CHGVAR     &MSGTXT ('Signed on User' *CAT '''s message queue is ' *CAT &MSGLIB +
+000255180305                                      *TCAT '/' *CAT &MSGQ)
+000256180305                      ENDDO
+000257180305                      WHEN       (&OPTION='4' *OR &OPTION='04') DO
+000258180305                         CHGVAR     &IN30 '0'
+000259180305                         RTVSYSVAL  SYSVAL(QACTJOB) RTNVAR(&ACTJOB)
+000260180305                         CHGVAR     &ACTJOBTXT &ACTJOB
+000261180305                         CHGVAR     &MSGTXT ('Initial number of active jobs for which storage is +
+000262180305                                      allocated is ' *BCAT &ACTJOBTXT)
+000263180305                      ENDDO
+000264180305                      WHEN       (&OPTION='5' *OR &OPTION='05') DO
+000265180305                         CHGVAR     &IN30 '0'
+000266180305                         RTVSYSVAL  SYSVAL(QSRLNBR) RTNVAR(&SRLNBR)
+000267180305                         CHGVAR     &MSGTXT ('The system serial No is ' *CAT &SRLNBR)
+000268180305                      ENDDO
+000269180305                      WHEN       (&OPTION='6' *OR &OPTION='06') DO
+000270180305                         CHGVAR     &IN30 '0'
+000271180305                         RTVSYSVAL  SYSVAL(QPWDMAXLEN) RTNVAR(&PWDL)
+000272180305                         CHGVAR     &PWDLT &PWDL
+000273180305                         CHGVAR     &MSGTXT ('Maximum password length is' *BCAT &PWDLT)
+000274180305                      ENDDO
+000275180305                      OTHERWISE  CHGVAR &IN30 '1'
+000276180305                   ENDSELECT
+000277180305                   SNDRCVF
+000278180305             ENDDO
+000279180305
+000280180305             SUBR       OPTION1
+000281180305                RTVJOBA    CURLIB(&CURLIB)
+000282180305                CHGCURLIB  BCI433LIB
+000283180305                CALL       HWYTOLLRPG
+000284180305                DSPLIB
+000285180305                CHGCURLIB  &CURLIB
+000286180305                DSPLIB
+000287180305                CHGVAR     &MsgTxt1("the instructor version of Highway Toll RPGLE program was run")
+000288180305                CHGVAR     &MsgTxt2("CLLE Programs can manage how an RPGLE Business Application is run")
+000289180305             ENDSUBR
+000290180305             ENDPGM

@@ -1,0 +1,30 @@
+000100180305
+000101180305     A          R LAB4DISPL                 CF03(03 'EXIT')
+000102180305     A                                      CF21(21 'COMAND LINE')
+000103180305     A                                  1 38'Lab 4'
+000104180305     A                                  5  3'Please select one of the following-
+000105180305     A                                       options:'
+000106180305     A                                  8 14'2.  Password Expiry Interval '
+000107180305     A                                  7 14'1.  Run Highway Toll Program'
+000108180305     A                                  9 14'3.  Signed on User''s Message Queu-
+000109180305     A                                      e'
+000113180305     A                                 23  4'F3=Exit'
+000114180305     A                                 23 17'F21=Comand Line '
+000115180305     A                                  1  5'MONARK PATEL'
+000116180305     A                                  2  3' '
+000117180305     A                                 10 14'4.  Initial number of active jobs -
+000118180305     A                                      for storage allocation'
+000119180305     A                                 11 14'5.  Previous sign on by signed on -
+000120180305     A                                      user'
+000121180305     A                                  1 70DATE
+000122180305     A                                      EDTCDE(Y)
+000123180305     A                                  2 70TIME
+000124180305     A
+000125180305     A
+000126180305     A
+000127180305     A            MSGTXT1       70   B 16  5
+000128180305     A            MSGTXT2       70   B 17  5
+000129180305     A                                 19 64' '
+000130180305     A                                 13 13'Option:'
+000131180312     A            OPTION         3N 0B 13 23VALUES('1' '2' '3' '4' '5' '01' +
+000132180305     A                                      '02' '03' '04' '05')

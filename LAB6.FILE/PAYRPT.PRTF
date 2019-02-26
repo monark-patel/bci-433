@@ -1,0 +1,62 @@
+000001180312     A          R TITLE
+000002180312     A                                  1  2DATE
+000003180312     A                                      EDTCDE(Y)
+000004180312
+000005180312     A                                  1 14TIME
+000006180312     A                                  1 40'Weekly Payroll Report'
+000007180312     A                                  1 75'Page:'
+000008180312     A                                  1 80PAGNBR
+000009180312     A                                  2  2'Name: '
+000010180312     A                                  2  9'Monark Patel'
+000011180319     A            SHIFTTYPE     30      2 44
+000012180312     A          R COLHDG                    SPACEB(1)
+000014180312     A                                     6'Employee'
+000015180312     A                                      SPACEB(1)
+000016180312     A                                    19'Work'
+000017180312     A                                    29'Pay'
+000018180312     A                                    37'Hourly'
+000019180312     A                                    47'Hours'
+000020180312     A                                    56'Regular'
+000021180312     A                                    71'Overtime'
+000022180312     A                                    89'Total'
+000023180312     A                                     7'Number'
+000024180312     A                                      SPACEB(1)
+000025180312     A                                    19'Shift'
+000026180312     A                                    29'Grade'
+000027180312     A                                    38'Rate'
+000028180312     A                                    47'Worked'
+000029180312     A                                    58'Pay'
+000030180312     A                                    74'Pay'
+000031180312     A                                    90'Pay'
+000032180312     A          R EMPDETAIL                 SPACEB(2)
+000033180312     A            EMPNUM    R    9S 0      5REFFLD(ALLSHIFT/EMPNUM SENECAPAY/A-
+000034180312     A                                      LLSHIFT)
+000035180312     A                                      EDTWRD('0   -   -   ')
+000036180312     A            WORKSHIFT R    1A       20REFFLD(ALLSHIFT/WORKSHIFT +
+000037180312     A                                      SENECAPAY/ALLSHIFT)
+000038180312     A            PAYGRADE  R             30REFFLD(ALLSHIFT/PAYGRADE +
+000039180312     A                                      SENECAPAY/ALLSHIFT)
+000040180312     A            HOURLYRATE     5  2     37EDTCDE(1)
+000041180312     A            HRSWORKED R             48REFFLD(ALLSHIFT/HRSWORKED +
+000042180312     A                                      SENECAPAY/ALLSHIFT)
+000043180312     A            REGULARPAY     7  2     55EDTCDE(1)
+000044180312     A            OVERPAY        7  2     70EDTCDE(1)
+000045180312     A            TOTALPAY       7  2     86EDTCDE(1)
+000046180312     A          R TOTALS                    SPACEB(2)
+000047180312     A                                    41'Totals:'
+000048180312     A            TOTREGPAY      9  2     51
+000049180312     A                                      EDTCDE(1 $)
+000050180312     A            TOTOVTPAY      9  2     66EDTCDE(1 $)
+000051180312     A            TOTEMPPAY      9  2     82EDTCDE(1 $)
+000052180312
+000053180312
+000100      
+000101180312     A*%%RS+<record-sequences>
+000102180312     A*%%RS+ <sequence name="REPORT1">
+000103180312     A*%%RS+  <device type="printer" width="132" height="66" />
+000104180312     A*%%RS+  <record-write record-format="TITLE" />
+000105180312     A*%%RS+  <record-write record-format="COLHDG" />
+000106180312     A*%%RS+  <record-write record-format="EMPDETAIL" />
+000107180312     A*%%RS+  <record-write record-format="TOTALS" />
+000108180312     A*%%RS+ </sequence>
+000109180312     A*%%RS </record-sequences>

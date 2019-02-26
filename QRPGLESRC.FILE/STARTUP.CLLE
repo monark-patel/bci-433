@@ -1,0 +1,4 @@
+000100180305             PGM
+000101180305             CALL       STRJOB
+000102180305             Addlible   BCI433Lib
+000103180305             ENDPGM
